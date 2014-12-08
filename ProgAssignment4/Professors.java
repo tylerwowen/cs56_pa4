@@ -1,16 +1,21 @@
 package ProgAssignment4;
 
-import java.util.ArrayList;
 
-public class Professors extends Users{
+public class Professors extends CommonUsers{
 	private int PIN;
-	
-	public Professors(String name, String address, String phoneNumber, int iD,
-			int pIN,  ArrayList<Book> booklist, Catalog catalog) {
-		super(name, address, phoneNumber, iD);
-		PIN = pIN;
-		operations = new UserOperations(catalog);
-		this.booklist = booklist;
-	}
 
+	public Professors(int iD, int pIN, String name, String address, String phoneNumber, 
+			 Catalog catalog) {
+		super(iD, name, address, phoneNumber, catalog);
+		PIN = pIN;
+		policy = new ProfPolicy();
+	}
+	public Professors() {
+		// TODO Auto-generated constructor stub
+	}
+	public boolean comparePIN(int pin){
+		if (pin == PIN)
+			return true;
+		return false;
+	}
 }

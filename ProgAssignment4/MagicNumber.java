@@ -1,5 +1,7 @@
 package ProgAssignment4;
 
+import java.util.NoSuchElementException;
+
 public class MagicNumber {
 	public String classification,
 	subclassification,
@@ -13,13 +15,13 @@ public class MagicNumber {
 		this.copy = "";
 	}
 	
-	public MagicNumber(String classification, String subclassification, String serial,
-			String copy) {
-		this.classification = classification;
-		this.subclassification = subclassification;
-		this.serial = serial;
-		this.copy = copy;
-	}	
+	public MagicNumber(String str) throws NoSuchElementException{
+		String[] tokens = str.split("\\.");		
+		classification = tokens[0];
+		subclassification = tokens[1];
+		serial = tokens[2];
+		copy = tokens[3];
+	}
 	@Override
 	public String toString() {
 		return classification + "." + subclassification + "." + serial + "." + copy;

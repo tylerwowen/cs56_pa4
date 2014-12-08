@@ -10,32 +10,69 @@ public class UserOperations implements Operations {
 	}
 
 	@Override
-	public boolean  search(String keyword) {
+	public boolean search(String keyword) {
 		ArrayList<Book> collection = catalog.getCollection();
+		ArrayList<Book> result = new ArrayList<Book>();
 		for (Book book: collection){
 			if (book.toString().toLowerCase().contains(keyword.toLowerCase())){
-				System.out.println("haha");
+				result.add(book);				
 			}
+		}
+		if (!result.isEmpty()){
+			System.out.println("\nAvailable books:\n");
+			for (Book book : result){			
+				if (book.isAvailable()){				
+					System.out.println(book.toString1(true));
+					System.out.println();
+				}
+			}
+
+			System.out.println("\nNOT available books:\n");
+			for (Book book : result){			
+				if (!book.isAvailable()){				
+					System.out.println(book.toString1(true));
+					System.out.println();
+				}
+			}
+			return true;
 		}
 		return false;
 	}
 
 	@Override
-	public void checkOut(Book book) {
-		System.out.println("haha");// TODO Auto-generated method stub
-
+	public boolean checkOut(MagicNumber mgn) {
+		// todo check block
+		Book bk = new Book();
+		if ((bk = getBook(mgn.toString())) != null){
+			if (bk.isAvailable()){
+				bk.setAvailable(false);
+				System.out.println("Book checked out.");
+				return true;
+			}
+			System.out.println("Book is NOT available! Come back later\n");
+			return false;
+		}
+		System.out.println("Book does not exist.\n");
+		return false;
 	}
 
 	@Override
-	public void returnBook(Book book) {
-		System.out.println("haha");// TODO Auto-generated method stub
-
+	public void returnBook(MagicNumber mgn) {
+		Book bk = new Book();
+		if ((bk = getBook(mgn.toString())) != null){
+			bk.setAvailable(true);		
+		}		
 	}
 
-	@Override
-	public void showInfo() {
-		System.out.println("haha");// TODO Auto-generated method stub
 
+	@Override
+	public Book getBook(String keyword){
+		for (Book book: catalog.getCollection()){
+			if (book.toString().toLowerCase().contains(keyword.toLowerCase())){
+				return book;
+			}
+		}
+		return null;
 	}
 
 }
