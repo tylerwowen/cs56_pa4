@@ -68,25 +68,6 @@ public class Book {
 		return magicnumber;
 	}
 
-	public String getAuthors() {
-		return authors;
-	}
-
-	public String getPublisher() {
-		return publisher;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public String getYear() {
-		return year;
-	}
-
-	public String getSubject() {
-		return subject;
-	}
 	public boolean isAvailable() {
 		return available;
 	}
