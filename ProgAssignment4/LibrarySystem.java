@@ -267,7 +267,7 @@ public class LibrarySystem {
 									+"\n2: Check out a book"
 									+"\n3: Return a book"
 									+"\n4: L1: List this user's information"
-									+"\n5: l2: Change this user's status"
+									+"\n5: L2: Change this user's status"
 									+ "\nRETURN");
 							option = s.nextLine();
 							switch (option){
@@ -321,11 +321,12 @@ public class LibrarySystem {
 								break;
 							}								
 							case "RETURN":
+								option = "RETURN";
 								break;
 							default: 
 								System.out.println("Invalid Input!");
 							}
-						} while (!option.equals("RETUEN"));
+						} while (!option.equals("RETURN"));
 						break;
 					}
 

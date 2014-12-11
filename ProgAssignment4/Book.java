@@ -24,8 +24,8 @@ public class Book {
 		this.subject = "";
 		this.available = false;
 	}
-	public Book(MagicNumber magicnumber, String authors, String publisher,
-			String title, String year, String subject) {
+	public Book(MagicNumber magicnumber, String title, String authors,
+			String publisher, String year, String subject) {
 		this.magicnumber = magicnumber;
 		this.authors = authors;
 		this.publisher = publisher;
