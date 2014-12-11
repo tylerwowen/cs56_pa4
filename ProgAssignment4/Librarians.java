@@ -1,5 +1,7 @@
 package ProgAssignment4;
 
+import java.util.ArrayList;
+
 public class Librarians extends Users{
 	private int PIN;
 
@@ -12,18 +14,17 @@ public class Librarians extends Users{
 	}
 	
 	public Librarians() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
-	public void L1(){
-		((Librarians) operations).L1();
+	public void L2(CommonUsers cu, int blockUser){
+		((LOperations) operations).L2(cu, blockUser);
 	}
-	public void L2(){
-		((Librarians) operations).L2();
+	
+	public void L3(ArrayList<Users> users){
+		((LOperations) operations).L3(users);
 	}
-	public void L3(){
-		((Librarians) operations).L3();
-	}
+	
 	public boolean comparePIN(int pin){
 		if (pin == PIN)
 			return true;

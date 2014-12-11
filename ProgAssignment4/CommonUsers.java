@@ -14,9 +14,8 @@ public class CommonUsers extends Users {
 		this.catalog = catalog;
 	}
 	
-	public CommonUsers(){
-		
-		booklist = new ArrayList<Book>();
+	public CommonUsers(){		
+		super();
 	}
 
 	public boolean checkOut(MagicNumber mgn){
@@ -32,8 +31,8 @@ public class CommonUsers extends Users {
 		return false;
 	}
 	public void returnBook(MagicNumber mgn){
-		operations.returnBook( mgn);
-		this.removeBook(mgn);
+		if (this.removeBook(mgn))
+			operations.returnBook( mgn);
 	}
 	public void search(String keyword){
 		operations.search( keyword);
@@ -44,7 +43,7 @@ public class CommonUsers extends Users {
 					"\nPhone Number: "+phoneNumber+
 					"\nID: "+ID+
 					"\nBlocking Status: "+block + "\n\nBookList: ";
-		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/M/d");
 		Calendar c = Calendar.getInstance();
 		for (Book bk: booklist){		
 			c.setTime(bk.getCheckoutDate());
@@ -71,15 +70,18 @@ public class CommonUsers extends Users {
 		}
 	}
 	
-	public void removeBook(MagicNumber mgn){
+	public boolean removeBook(MagicNumber mgn){
 		for (int i=0; i< booklist.size(); i++){
 			if (booklist.get(i).getMagicnumber().toString().equals(mgn.toString())){
 				booklist.remove(i);
 				System.out.println("\nSuccessfully returned a book\n");
-				return;
+				return true;
 			}
 		}
+		System.out.println("\nYou do not have this book!\n");
+		return false;
 	}
+	
 	public void addBook(MagicNumber mgn){
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/M/d");
 		Book bk = new Book(format.format(this.catalog.getDate())+":"+mgn.toString());
@@ -90,4 +92,8 @@ public class CommonUsers extends Users {
 	public void setBlock(){
 		this.block = true;
 	}
+	public boolean comparePIN(int PIN){
+		return false;
+	}
+
 }

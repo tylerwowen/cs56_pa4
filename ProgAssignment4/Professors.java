@@ -13,7 +13,8 @@ public class Professors extends CommonUsers{
 	public Professors() {
 		// TODO Auto-generated constructor stub
 	}
-	public boolean comparePIN(int pin){
+	@Override
+	public boolean comparePIN(int pin) {
 		if (pin == PIN)
 			return true;
 		return false;

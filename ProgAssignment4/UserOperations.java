@@ -64,7 +64,6 @@ public class UserOperations implements Operations {
 		}		
 	}
 
-
 	@Override
 	public Book getBook(String keyword){
 		for (Book book: catalog.getCollection()){

@@ -1,6 +1,5 @@
 package ProgAssignment4;
 
-import java.util.NoSuchElementException;
 
 public class MagicNumber {
 	public String classification,
@@ -15,12 +14,17 @@ public class MagicNumber {
 		this.copy = "";
 	}
 	
-	public MagicNumber(String str) throws NoSuchElementException{
-		String[] tokens = str.split("\\.");		
+	public MagicNumber(String str) throws ArrayIndexOutOfBoundsException{
+		String[] tokens = str.split("\\.");	
+		try{
 		classification = tokens[0];
 		subclassification = tokens[1];
 		serial = tokens[2];
 		copy = tokens[3];
+		}catch (ArrayIndexOutOfBoundsException e){
+			System.out.println("Invalid maigic number");
+			throw e;
+		}
 	}
 	@Override
 	public String toString() {

@@ -13,7 +13,7 @@ public class Users {
 	protected boolean block;
 	
 	public Users(){
-		
+		booklist = new ArrayList<Book>();
 	}
 	public Users(String name, String address, String phoneNumber, int iD) {
 		this.name = name;
@@ -27,6 +27,9 @@ public class Users {
 		if (id == ID)
 			return this;
 		return null;
+	}
+	public int applyPolicy(){
+		return policy.applyPolicy();
 	}
 
 }
